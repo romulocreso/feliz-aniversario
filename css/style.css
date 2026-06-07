@@ -1,0 +1,471 @@
+/* ===================================================
+   FELIZ ANIVERSÁRIO - IGOR
+   Estilos da página
+   =================================================== */
+
+/* ---------- Reset básico ---------- */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+:root {
+  --rosa: #ff5c8a;
+  --roxo: #7b2ff7;
+  --azul: #2d9cdb;
+  --amarelo: #ffd166;
+  --escuro: #1b1033;
+  --claro: #fff7fb;
+  --texto: #2c2440;
+  --sombra: 0 10px 30px rgba(0, 0, 0, 0.15);
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: "Poppins", sans-serif;
+  color: var(--texto);
+  background: var(--claro);
+  overflow-x: hidden;
+}
+
+/* Canvas do confete fica fixo cobrindo a tela, atrás do conteúdo clicável */
+#confete {
+  position: fixed;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 9999;
+}
+
+/* ===================== HERO ===================== */
+.hero {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 2rem 1rem;
+  background: linear-gradient(135deg, var(--roxo), var(--rosa) 60%, var(--amarelo));
+  background-size: 200% 200%;
+  animation: gradiente 12s ease infinite;
+  color: #fff;
+  position: relative;
+}
+
+@keyframes gradiente {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+.hero-conteudo {
+  max-width: 800px;
+  animation: surgir 1.2s ease both;
+}
+
+@keyframes surgir {
+  from { opacity: 0; transform: translateY(40px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.hero-saudacao {
+  font-size: 1.1rem;
+  letter-spacing: 1px;
+  opacity: 0.9;
+  margin-bottom: 0.5rem;
+}
+
+.hero-titulo {
+  font-family: "Dancing Script", cursive;
+  font-size: clamp(3rem, 10vw, 6rem);
+  line-height: 1;
+  text-shadow: 0 4px 20px rgba(0, 0, 0, 0.25);
+}
+
+.hero-nome {
+  font-size: clamp(1.3rem, 4vw, 2.2rem);
+  font-weight: 600;
+  margin-top: 0.5rem;
+}
+
+.hero-data {
+  font-size: 1.1rem;
+  margin-top: 0.8rem;
+  opacity: 0.95;
+}
+
+/* Card da idade dinâmica */
+.idade-card {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+  flex-wrap: wrap;
+  margin: 2rem 0;
+}
+
+.idade-item {
+  background: rgba(255, 255, 255, 0.18);
+  backdrop-filter: blur(8px);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  border-radius: 18px;
+  padding: 1rem 1.4rem;
+  min-width: 120px;
+}
+
+.idade-numero {
+  display: block;
+  font-size: 2.2rem;
+  font-weight: 700;
+}
+
+.idade-label {
+  font-size: 0.85rem;
+  opacity: 0.9;
+}
+
+.btn-rolar {
+  display: inline-block;
+  margin-top: 1rem;
+  padding: 0.8rem 1.8rem;
+  background: #fff;
+  color: var(--roxo);
+  text-decoration: none;
+  font-weight: 600;
+  border-radius: 50px;
+  box-shadow: var(--sombra);
+  transition: transform 0.2s ease;
+}
+
+.btn-rolar:hover {
+  transform: translateY(-3px) scale(1.03);
+}
+
+/* ===================== SEÇÕES GERAIS ===================== */
+.secao {
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: 4rem 1.2rem;
+}
+
+.secao-titulo {
+  font-family: "Dancing Script", cursive;
+  font-size: clamp(2rem, 6vw, 3rem);
+  text-align: center;
+  color: var(--roxo);
+  margin-bottom: 0.5rem;
+}
+
+.secao-sub {
+  text-align: center;
+  color: #8a7fa8;
+  margin-bottom: 2rem;
+}
+
+/* ===================== MENSAGEM ===================== */
+.mensagem-texto {
+  max-width: 720px;
+  margin: 1.5rem auto 0;
+  font-size: 1.15rem;
+  line-height: 1.9;
+  text-align: center;
+  background: #fff;
+  padding: 2.5rem;
+  border-radius: 24px;
+  box-shadow: var(--sombra);
+}
+
+.mensagem-texto p + p {
+  margin-top: 1.2rem;
+}
+
+.assinatura {
+  font-family: "Dancing Script", cursive;
+  font-size: 1.6rem;
+  color: var(--rosa);
+  margin-top: 1.5rem !important;
+}
+
+/* ===================== GALERIA ===================== */
+.galeria-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  gap: 1rem;
+}
+
+.galeria-item {
+  position: relative;
+  overflow: hidden;
+  border-radius: 18px;
+  aspect-ratio: 1 / 1;
+  cursor: pointer;
+  box-shadow: var(--sombra);
+  background: #efeaf7;
+}
+
+.galeria-item img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.4s ease;
+  display: block;
+}
+
+.galeria-item:hover img {
+  transform: scale(1.1);
+}
+
+.galeria-legenda {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  padding: 0.8rem;
+  font-size: 0.9rem;
+  color: #fff;
+  background: linear-gradient(transparent, rgba(0, 0, 0, 0.7));
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.galeria-item:hover .galeria-legenda {
+  opacity: 1;
+}
+
+/* Lightbox (foto ampliada) */
+.lightbox {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.9);
+  display: none;
+  align-items: center;
+  justify-content: center;
+  z-index: 10000;
+  padding: 2rem;
+  cursor: zoom-out;
+}
+
+.lightbox.aberto {
+  display: flex;
+  animation: surgir 0.3s ease;
+}
+
+.lightbox img {
+  max-width: 90%;
+  max-height: 85vh;
+  border-radius: 12px;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
+}
+
+/* ===================== VÍDEO ===================== */
+.video-wrapper {
+  max-width: 800px;
+  margin: 0 auto;
+  border-radius: 24px;
+  overflow: hidden;
+  box-shadow: var(--sombra);
+  background: #000;
+}
+
+.video-wrapper video,
+.video-wrapper iframe {
+  width: 100%;
+  display: block;
+  aspect-ratio: 16 / 9;
+  border: 0;
+}
+
+/* ===================== PLAYER DE MÚSICA ===================== */
+.musica {
+  background: linear-gradient(135deg, #f6f0ff, #fff0f6);
+  border-radius: 32px;
+}
+
+.player {
+  max-width: 560px;
+  margin: 0 auto;
+  background: #fff;
+  border-radius: 24px;
+  padding: 1.8rem;
+  box-shadow: var(--sombra);
+}
+
+.player-info {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin-bottom: 1.2rem;
+}
+
+.player-capa {
+  width: 64px;
+  height: 64px;
+  border-radius: 16px;
+  background: linear-gradient(135deg, var(--roxo), var(--rosa));
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.8rem;
+  flex-shrink: 0;
+}
+
+.player-capa.girando {
+  animation: girar 3s linear infinite;
+  border-radius: 50%;
+}
+
+@keyframes girar {
+  to { transform: rotate(360deg); }
+}
+
+.player-faixa {
+  display: block;
+  font-weight: 600;
+  font-size: 1.05rem;
+}
+
+.player-artista {
+  font-size: 0.9rem;
+  color: #8a7fa8;
+}
+
+.player-controles {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 1.5rem;
+  margin: 1rem 0;
+}
+
+.ctrl {
+  background: none;
+  border: none;
+  font-size: 1.5rem;
+  cursor: pointer;
+  color: var(--roxo);
+  transition: transform 0.15s ease;
+}
+
+.ctrl:hover {
+  transform: scale(1.2);
+}
+
+.ctrl-play {
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, var(--roxo), var(--rosa));
+  color: #fff;
+  font-size: 1.4rem;
+  box-shadow: 0 6px 18px rgba(123, 47, 247, 0.4);
+}
+
+.player-barra {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  font-size: 0.8rem;
+  color: #8a7fa8;
+}
+
+.player-barra input[type="range"] {
+  flex: 1;
+  accent-color: var(--roxo);
+  cursor: pointer;
+}
+
+.playlist {
+  list-style: none;
+  margin-top: 1.4rem;
+  border-top: 1px solid #efeaf7;
+  padding-top: 0.8rem;
+}
+
+.playlist li {
+  display: flex;
+  align-items: center;
+  gap: 0.7rem;
+  padding: 0.7rem 0.8rem;
+  border-radius: 12px;
+  cursor: pointer;
+  transition: background 0.2s ease;
+}
+
+.playlist li:hover {
+  background: #f6f0ff;
+}
+
+.playlist li.ativa {
+  background: linear-gradient(135deg, rgba(123, 47, 247, 0.12), rgba(255, 92, 138, 0.12));
+  font-weight: 600;
+}
+
+.playlist .num {
+  color: #b5a9d0;
+  font-size: 0.85rem;
+  width: 1.4rem;
+}
+
+/* ===================== RODAPÉ ===================== */
+.rodape {
+  text-align: center;
+  padding: 3rem 1rem;
+  background: var(--escuro);
+  color: #fff;
+}
+
+.btn-topo {
+  display: inline-block;
+  margin-top: 1rem;
+  color: var(--amarelo);
+  text-decoration: none;
+  font-weight: 600;
+}
+
+/* ===================== BOTÃO CONFETE ===================== */
+.btn-confete {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  border: none;
+  background: #fff;
+  font-size: 1.8rem;
+  cursor: pointer;
+  box-shadow: var(--sombra);
+  z-index: 10001;
+  transition: transform 0.2s ease;
+}
+
+.btn-confete:hover {
+  transform: scale(1.15) rotate(15deg);
+}
+
+/* ===================== RESPONSIVO ===================== */
+@media (max-width: 600px) {
+  .mensagem-texto {
+    padding: 1.6rem;
+    font-size: 1.05rem;
+  }
+  .idade-item {
+    min-width: 100px;
+    padding: 0.8rem 1rem;
+  }
+  .idade-numero {
+    font-size: 1.7rem;
+  }
+}
+
+/* Respeita quem prefere menos animação */
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation: none !important;
+    transition: none !important;
+  }
+}
